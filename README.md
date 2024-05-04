@@ -1,40 +1,57 @@
-# Define una variable que contenga todos los argumentos pasados a `make`
-args = $(filter-out $@,$(MAKECMDGOALS))
+# Laravel 11 & Vue 3 Blog
 
-# Define una regla que no haga nada por sí misma para los argumentos pasados
-%:
-	@:
+## Description
+This project is a simple blog developed using Laravel 11 and Vue 3, designed to practice with the latest versions of these frameworks. It allows for creating, editing, and deleting posts from an admin panel, offering a straightforward way to manage dynamic content.
 
-artisan:
-	docker-compose run --rm artisan $(args)
+## Installation
 
-npm:
-	docker-compose run --rm npm $(args)
+### Prerequisites
+Ensure Docker is installed on your system to use the Docker Compose commands specified in the `Makefile`.
 
-du:
-	docker-compose up -d
+### Clone the Repository
+To get started, clone this repository to your local machine:
+```
+git clone [repository URL]
+cd [repository name]
+```
 
-dd:
-	docker-compose down
+### Setup
+Use the included `Makefile` to configure and run the project:
+```
+make du # Start Docker containers
+make migrate # Run database migrations
+```
 
-db:
-	docker-compose up -d --build php
+## Usage
 
-artisan-tinker:
-	docker-compose run --rm artisan tinker
+### Development Commands
+You can use the following commands to work with the project:
 
-composer:
-	docker-compose run --rm composer
+- **Artisan**: Run Artisan commands:
+```
+make artisan args="migrate:status"
+```
 
-migrate:
-	docker-compose run --rm artisan migrate
+- **NPM**: Manage Node dependencies and run scripts:
+```
+make npm args="install"
+```
 
-npm-dev:
-	docker-compose run --rm --service-ports npm run dev
+- **Composer**: Run Composer commands to manage PHP dependencies:
+```
+make composer args="require laravel/sanctum"
+```
 
-logs:
-	docker-compose logs -f
+- **Logs**: To view logs in real-time:
 
-# Start artisan serve
-artisan-serve:
-	docker-compose run --rm artisan serve
+```
+make logs
+```
+
+### Server
+To start the development server:
+```
+make artisan-serve
+```
+
+
