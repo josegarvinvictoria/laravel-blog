@@ -4,6 +4,7 @@ import store from '../store';
 import Home from '../pages/Home.vue';
 import Post from '../pages/Post.vue';
 import Login from '../pages/Login.vue';
+import NotFound from '../pages/404.vue';
 import Posts from '../pages/admin/Posts.vue';
 import Edit from '../pages/admin/Edit.vue';
 
@@ -49,6 +50,11 @@ const routes = [
                 ? next({ name: 'admin.login' })
                 : next();
         }
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: NotFound
     },
 ];
 
