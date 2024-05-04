@@ -18,7 +18,7 @@ dd:
 	docker-compose down
 
 db:
-	docker-compose up -d --build php
+	docker-compose up -d --build
 
 artisan-tinker:
 	docker-compose run --rm artisan tinker
